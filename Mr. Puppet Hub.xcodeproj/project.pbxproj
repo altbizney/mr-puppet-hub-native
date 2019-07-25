@@ -26,12 +26,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BCD8C8F022E9BA5B00FE7CD4 /* Puppet Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Puppet Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD8C8F022E9BA5B00FE7CD4 /* Mr. Puppet Hub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mr. Puppet Hub.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCD8C8F822E9BA5B00FE7CD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		BCD8C8FA22E9BA5B00FE7CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BCD8C90122E9BAEA00FE7CD4 /* Puppet Master.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Puppet Master.entitlements"; sourceTree = "<group>"; };
 		BCD8C90922E9BBD500FE7CD4 /* SwiftSerial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftSerial.swift; path = SwiftSerial/SwiftSerial.swift; sourceTree = SOURCE_ROOT; };
 		BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSwiftSerial.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD8C92D22EA0E1E00FE7CD4 /* Serial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serial.swift; sourceTree = "<group>"; };
@@ -59,7 +58,7 @@
 		BCD8C8E722E9BA5B00FE7CD4 = {
 			isa = PBXGroup;
 			children = (
-				BCD8C8F222E9BA5B00FE7CD4 /* Puppet Master */,
+				BCD8C8F222E9BA5B00FE7CD4 /* Puppet Hub */,
 				BCD8C91E22EA0A9B00FE7CD4 /* SwiftSerial */,
 				BCD8C90522E9BB9C00FE7CD4 /* Frameworks */,
 				BCD8C8F122E9BA5B00FE7CD4 /* Products */,
@@ -69,13 +68,13 @@
 		BCD8C8F122E9BA5B00FE7CD4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BCD8C8F022E9BA5B00FE7CD4 /* Puppet Master.app */,
+				BCD8C8F022E9BA5B00FE7CD4 /* Mr. Puppet Hub.app */,
 				BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BCD8C8F222E9BA5B00FE7CD4 /* Puppet Master */ = {
+		BCD8C8F222E9BA5B00FE7CD4 /* Puppet Hub */ = {
 			isa = PBXGroup;
 			children = (
 				BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */,
@@ -83,9 +82,8 @@
 				BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */,
 				BCD8C8F722E9BA5B00FE7CD4 /* MainMenu.xib */,
 				BCD8C8FA22E9BA5B00FE7CD4 /* Info.plist */,
-				BCD8C90122E9BAEA00FE7CD4 /* Puppet Master.entitlements */,
 			);
-			path = "Puppet Master";
+			path = "Puppet Hub";
 			sourceTree = "<group>";
 		};
 		BCD8C90522E9BB9C00FE7CD4 /* Frameworks */ = {
@@ -116,9 +114,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		BCD8C8EF22E9BA5B00FE7CD4 /* Puppet Master */ = {
+		BCD8C8EF22E9BA5B00FE7CD4 /* Mr. Puppet Hub */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BCD8C8FE22E9BA5B00FE7CD4 /* Build configuration list for PBXNativeTarget "Puppet Master" */;
+			buildConfigurationList = BCD8C8FE22E9BA5B00FE7CD4 /* Build configuration list for PBXNativeTarget "Mr. Puppet Hub" */;
 			buildPhases = (
 				BCD8C8EC22E9BA5B00FE7CD4 /* Sources */,
 				BCD8C8ED22E9BA5B00FE7CD4 /* Frameworks */,
@@ -129,9 +127,9 @@
 			dependencies = (
 				BCD8C92822EA0ABA00FE7CD4 /* PBXTargetDependency */,
 			);
-			name = "Puppet Master";
+			name = "Mr. Puppet Hub";
 			productName = "Puppet Master";
-			productReference = BCD8C8F022E9BA5B00FE7CD4 /* Puppet Master.app */;
+			productReference = BCD8C8F022E9BA5B00FE7CD4 /* Mr. Puppet Hub.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BCD8C91C22EA0A9B00FE7CD4 /* SwiftSerial */ = {
@@ -174,7 +172,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BCD8C8EB22E9BA5B00FE7CD4 /* Build configuration list for PBXProject "Puppet Master" */;
+			buildConfigurationList = BCD8C8EB22E9BA5B00FE7CD4 /* Build configuration list for PBXProject "Mr. Puppet Hub" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -187,7 +185,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BCD8C8EF22E9BA5B00FE7CD4 /* Puppet Master */,
+				BCD8C8EF22E9BA5B00FE7CD4 /* Mr. Puppet Hub */,
 				BCD8C91C22EA0A9B00FE7CD4 /* SwiftSerial */,
 			);
 		};
@@ -369,12 +367,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = H7BXRR563Q;
-				INFOPLIST_FILE = "Puppet Master/Info.plist";
+				INFOPLIST_FILE = "Puppet Hub/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thinko.Puppet-Master";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thinko.Puppet-Hub";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -386,12 +384,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = H7BXRR563Q;
-				INFOPLIST_FILE = "Puppet Master/Info.plist";
+				INFOPLIST_FILE = "Puppet Hub/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thinko.Puppet-Master";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thinko.Puppet-Hub";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -421,7 +419,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BCD8C8EB22E9BA5B00FE7CD4 /* Build configuration list for PBXProject "Puppet Master" */ = {
+		BCD8C8EB22E9BA5B00FE7CD4 /* Build configuration list for PBXProject "Mr. Puppet Hub" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BCD8C8FC22E9BA5B00FE7CD4 /* Debug */,
@@ -430,7 +428,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BCD8C8FE22E9BA5B00FE7CD4 /* Build configuration list for PBXNativeTarget "Puppet Master" */ = {
+		BCD8C8FE22E9BA5B00FE7CD4 /* Build configuration list for PBXNativeTarget "Mr. Puppet Hub" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BCD8C8FF22E9BA5B00FE7CD4 /* Debug */,

@@ -11,7 +11,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Puppet_Master" customModuleProvider="target">
             <connections>
                 <outlet property="textView" destination="k8J-sb-Ru8" id="qvT-rN-W2v"/>
@@ -21,11 +21,11 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="Puppet Master" id="1Xt-HY-uBw">
+                <menuItem title="Mr. Puppet Hub" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Puppet Master" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="Mr. Puppet Hub" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
-                            <menuItem title="About Puppet Master" id="5kV-Vb-QxS">
+                            <menuItem title="About Mr. Puppet Hub" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
@@ -34,7 +34,7 @@
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                             <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
-                            <menuItem title="Hide Puppet Master" keyEquivalent="h" id="Olw-nP-bQN">
+                            <menuItem title="Hide Mr. Puppet Hub" keyEquivalent="h" id="Olw-nP-bQN">
                                 <connections>
                                     <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
                                 </connections>
@@ -52,7 +52,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                            <menuItem title="Quit Puppet Master" keyEquivalent="q" id="4sb-4s-VLi">
+                            <menuItem title="Quit Mr. Puppet Hub" keyEquivalent="q" id="4sb-4s-VLi">
                                 <connections>
                                     <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
                                 </connections>
@@ -342,7 +342,7 @@
             </items>
             <point key="canvasLocation" x="72" y="180"/>
         </menu>
-        <window title="Puppet Master" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="Mr. Puppet Hub" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
@@ -355,7 +355,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                         <clipView key="contentView" copiesOnScroll="NO" id="Kqo-zr-GVy">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" smartInsertDelete="YES" id="k8J-sb-Ru8">
                                     <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
