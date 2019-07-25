@@ -11,6 +11,8 @@ import SwiftSerial
 
 protocol SerialDelegate: class {
     func serialDidConnect(_ serial: Serial)
+    func serialDidDisconnect(_ serial: Serial)
+    func serialDidTimeOut(_ serial: Serial)
     func serial(_ serial: Serial, didFailConnectWithError error: Error)
     func serial(_ serial: Serial, didReadLine string: String)
 }
@@ -19,16 +21,22 @@ final class Serial {
 
     private let port: SerialPort
 
+    let name: String
+
+    var isConnected: Bool = false
+
     weak var delegate: SerialDelegate?
 
 
     init(path: String) {
-        self.port = SerialPort(path: "/dev/ttys002")
+        self.name = path
+        self.port = SerialPort(path: path)
     }
 
     func run() {
         do {
             try self.port.open(receive: true, transmit: false)
+            self.isConnected = true
             self.delegate?.serialDidConnect(self)
         } catch {
             self.delegate?.serial(self, didFailConnectWithError: error)
@@ -36,7 +44,9 @@ final class Serial {
         }
 
         defer {
+            self.isConnected = false
             self.port.close()
+            self.delegate?.serialDidDisconnect(self)
         }
 
         self.port.setSettings(

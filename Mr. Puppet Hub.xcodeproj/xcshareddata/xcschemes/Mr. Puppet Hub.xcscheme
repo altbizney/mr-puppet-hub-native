@@ -64,7 +64,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "SERIAL_PORT"
-            value = "/dev/ttys002"
+            value = "/Users/ehw/puppet"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
