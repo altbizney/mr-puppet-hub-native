@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BCD8C8F422E9BA5B00FE7CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */; };
+		BCD8C8F622E9BA5B00FE7CD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */; };
+		BCD8C8F922E9BA5B00FE7CD4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD8C8F722E9BA5B00FE7CD4 /* MainMenu.xib */; };
+		BCD8C92622EA0A9F00FE7CD4 /* SwiftSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C90922E9BBD500FE7CD4 /* SwiftSerial.swift */; };
+		BCD8C92B22EA0D1700FE7CD4 /* libSwiftSerial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */; };
+		BCD8C92E22EA0E1E00FE7CD4 /* Serial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C92D22EA0E1E00FE7CD4 /* Serial.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BCD8C92722EA0ABA00FE7CD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCD8C8E822E9BA5B00FE7CD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCD8C91C22EA0A9B00FE7CD4;
+			remoteInfo = SwiftSerial;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BCD8C8F022E9BA5B00FE7CD4 /* Puppet Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Puppet Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCD8C8F822E9BA5B00FE7CD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BCD8C8FA22E9BA5B00FE7CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCD8C90122E9BAEA00FE7CD4 /* Puppet Master.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Puppet Master.entitlements"; sourceTree = "<group>"; };
+		BCD8C90922E9BBD500FE7CD4 /* SwiftSerial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftSerial.swift; path = SwiftSerial/SwiftSerial.swift; sourceTree = SOURCE_ROOT; };
+		BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSwiftSerial.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD8C92D22EA0E1E00FE7CD4 /* Serial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serial.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCD8C8ED22E9BA5B00FE7CD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD8C92B22EA0D1700FE7CD4 /* libSwiftSerial.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD8C91B22EA0A9B00FE7CD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BCD8C8E722E9BA5B00FE7CD4 = {
+			isa = PBXGroup;
+			children = (
+				BCD8C8F222E9BA5B00FE7CD4 /* Puppet Master */,
+				BCD8C91E22EA0A9B00FE7CD4 /* SwiftSerial */,
+				BCD8C90522E9BB9C00FE7CD4 /* Frameworks */,
+				BCD8C8F122E9BA5B00FE7CD4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BCD8C8F122E9BA5B00FE7CD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCD8C8F022E9BA5B00FE7CD4 /* Puppet Master.app */,
+				BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCD8C8F222E9BA5B00FE7CD4 /* Puppet Master */ = {
+			isa = PBXGroup;
+			children = (
+				BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */,
+				BCD8C92D22EA0E1E00FE7CD4 /* Serial.swift */,
+				BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */,
+				BCD8C8F722E9BA5B00FE7CD4 /* MainMenu.xib */,
+				BCD8C8FA22E9BA5B00FE7CD4 /* Info.plist */,
+				BCD8C90122E9BAEA00FE7CD4 /* Puppet Master.entitlements */,
+			);
+			path = "Puppet Master";
+			sourceTree = "<group>";
+		};
+		BCD8C90522E9BB9C00FE7CD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCD8C91E22EA0A9B00FE7CD4 /* SwiftSerial */ = {
+			isa = PBXGroup;
+			children = (
+				BCD8C90922E9BBD500FE7CD4 /* SwiftSerial.swift */,
+			);
+			path = SwiftSerial;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BCD8C91922EA0A9B00FE7CD4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BCD8C8EF22E9BA5B00FE7CD4 /* Puppet Master */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD8C8FE22E9BA5B00FE7CD4 /* Build configuration list for PBXNativeTarget "Puppet Master" */;
+			buildPhases = (
+				BCD8C8EC22E9BA5B00FE7CD4 /* Sources */,
+				BCD8C8ED22E9BA5B00FE7CD4 /* Frameworks */,
+				BCD8C8EE22E9BA5B00FE7CD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCD8C92822EA0ABA00FE7CD4 /* PBXTargetDependency */,
+			);
+			name = "Puppet Master";
+			productName = "Puppet Master";
+			productReference = BCD8C8F022E9BA5B00FE7CD4 /* Puppet Master.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BCD8C91C22EA0A9B00FE7CD4 /* SwiftSerial */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD8C92322EA0A9B00FE7CD4 /* Build configuration list for PBXNativeTarget "SwiftSerial" */;
+			buildPhases = (
+				BCD8C91922EA0A9B00FE7CD4 /* Headers */,
+				BCD8C91A22EA0A9B00FE7CD4 /* Sources */,
+				BCD8C91B22EA0A9B00FE7CD4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftSerial;
+			productName = SwiftSerial;
+			productReference = BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCD8C8E822E9BA5B00FE7CD4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Thinko LLC";
+				TargetAttributes = {
+					BCD8C8EF22E9BA5B00FE7CD4 = {
+						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+					BCD8C91C22EA0A9B00FE7CD4 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = BCD8C8EB22E9BA5B00FE7CD4 /* Build configuration list for PBXProject "Puppet Master" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BCD8C8E722E9BA5B00FE7CD4;
+			productRefGroup = BCD8C8F122E9BA5B00FE7CD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCD8C8EF22E9BA5B00FE7CD4 /* Puppet Master */,
+				BCD8C91C22EA0A9B00FE7CD4 /* SwiftSerial */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCD8C8EE22E9BA5B00FE7CD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD8C8F622E9BA5B00FE7CD4 /* Assets.xcassets in Resources */,
+				BCD8C8F922E9BA5B00FE7CD4 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCD8C8EC22E9BA5B00FE7CD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD8C8F422E9BA5B00FE7CD4 /* AppDelegate.swift in Sources */,
+				BCD8C92E22EA0E1E00FE7CD4 /* Serial.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD8C91A22EA0A9B00FE7CD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD8C92622EA0A9F00FE7CD4 /* SwiftSerial.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCD8C92822EA0ABA00FE7CD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCD8C91C22EA0A9B00FE7CD4 /* SwiftSerial */;
+			targetProxy = BCD8C92722EA0ABA00FE7CD4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BCD8C8F722E9BA5B00FE7CD4 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCD8C8F822E9BA5B00FE7CD4 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BCD8C8FC22E9BA5B00FE7CD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BCD8C8FD22E9BA5B00FE7CD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BCD8C8FF22E9BA5B00FE7CD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = H7BXRR563Q;
+				INFOPLIST_FILE = "Puppet Master/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thinko.Puppet-Master";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BCD8C90022E9BA5B00FE7CD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = H7BXRR563Q;
+				INFOPLIST_FILE = "Puppet Master/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thinko.Puppet-Master";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BCD8C92422EA0A9B00FE7CD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H7BXRR563Q;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BCD8C92522EA0A9B00FE7CD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H7BXRR563Q;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCD8C8EB22E9BA5B00FE7CD4 /* Build configuration list for PBXProject "Puppet Master" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD8C8FC22E9BA5B00FE7CD4 /* Debug */,
+				BCD8C8FD22E9BA5B00FE7CD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCD8C8FE22E9BA5B00FE7CD4 /* Build configuration list for PBXNativeTarget "Puppet Master" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD8C8FF22E9BA5B00FE7CD4 /* Debug */,
+				BCD8C90022E9BA5B00FE7CD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCD8C92322EA0A9B00FE7CD4 /* Build configuration list for PBXNativeTarget "SwiftSerial" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD8C92422EA0A9B00FE7CD4 /* Debug */,
+				BCD8C92522EA0A9B00FE7CD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCD8C8E822E9BA5B00FE7CD4 /* Project object */;
+}
