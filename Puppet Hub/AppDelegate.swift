@@ -54,6 +54,15 @@ extension AppDelegate: SerialDelegate {
         }
     }
 
+    func serial(_ serial: Serial, didFailConnectWithError error: Error) {
+        dispatchMainSync {
+            self.textView?.string += "[\(Date())] [INFO] Connection failed with error: \(error.localizedDescription)\n"
+            self.textView?.string += "[\(Date())] [INFO] Please connect Mr. Puppet and reopen the app\n"
+
+            // TODO: add retry
+        }
+    }
+
     func serial(_ serial: Serial, didReadLine string: String) {
         dispatchMainSync {
             self.textView?.string += "[\(Date())] [ECHO] \(string)\n"

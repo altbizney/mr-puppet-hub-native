@@ -11,6 +11,7 @@ import SwiftSerial
 
 protocol SerialDelegate: class {
     func serialDidConnect(_ serial: Serial)
+    func serial(_ serial: Serial, didFailConnectWithError error: Error)
     func serial(_ serial: Serial, didReadLine string: String)
 }
 
@@ -30,7 +31,8 @@ final class Serial {
             try self.port.open(receive: true, transmit: false)
             self.delegate?.serialDidConnect(self)
         } catch {
-            fatalError(error.localizedDescription)
+            self.delegate?.serial(self, didFailConnectWithError: error)
+            return
         }
 
         defer {
