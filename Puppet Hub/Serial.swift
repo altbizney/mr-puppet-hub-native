@@ -56,8 +56,13 @@ final class Serial {
             timeout: 0
         )
 
-        while let line = try? self.port.readLine() {
-            self.delegate?.serial(self, didReadLine: line)
+        while true {
+            do {
+                let line = try self.port.readLine()
+                self.delegate?.serial(self, didReadLine: line)
+            } catch {
+                debugPrint(error)
+            }
         }
     }
 
