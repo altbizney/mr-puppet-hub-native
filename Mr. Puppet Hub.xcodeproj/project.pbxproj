@@ -7,15 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC073BE922EF1A7B00A366EF /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC073BE822EF1A7B00A366EF /* Server.swift */; };
+		BC073C0822EF2EC900A366EF /* libSwiftSerial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */; };
+		BC073C4422F069BA00A366EF /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC073C4122F0699A00A366EF /* libwebsockets.a */; };
+		BC073C4522F069BC00A366EF /* libwebsockets.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = BC073C4322F0699A00A366EF /* libwebsockets.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		BCD8C8F422E9BA5B00FE7CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */; };
 		BCD8C8F622E9BA5B00FE7CD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */; };
 		BCD8C8F922E9BA5B00FE7CD4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD8C8F722E9BA5B00FE7CD4 /* MainMenu.xib */; };
 		BCD8C92622EA0A9F00FE7CD4 /* SwiftSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C90922E9BBD500FE7CD4 /* SwiftSerial.swift */; };
-		BCD8C92B22EA0D1700FE7CD4 /* libSwiftSerial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */; };
 		BCD8C92E22EA0E1E00FE7CD4 /* Serial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C92D22EA0E1E00FE7CD4 /* Serial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BC073C3A22F0699A00A366EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CDB9AB5DAA34125AC8837AC;
+			remoteInfo = "test-lejp";
+		};
+		BC073C3C22F0699A00A366EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FA86B36BEC1E4D049A163F28;
+			remoteInfo = "test-server";
+		};
+		BC073C3E22F0699A00A366EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 644AC1D6562C43E78786E2F4;
+			remoteInfo = "test-server-extpoll";
+		};
+		BC073C4022F0699A00A366EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3882BF7341AA4CC5B1E1FC89;
+			remoteInfo = websockets;
+		};
+		BC073C4222F0699A00A366EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 79142FE3EDB5480E88763698;
+			remoteInfo = websockets_shared;
+		};
+		BC073C4822F069DD00A366EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9295FFA0A8844CCF883D3836;
+			remoteInfo = websockets;
+		};
+		BC073C4A22F069DD00A366EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 692D1A60B0BD46E185CD2200;
+			remoteInfo = websockets_shared;
+		};
 		BCD8C92722EA0ABA00FE7CD4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BCD8C8E822E9BA5B00FE7CD4 /* Project object */;
@@ -25,7 +77,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BC073C0B22EF2EE000A366EF /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BC073C4522F069BC00A366EF /* libwebsockets.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BC073BE822EF1A7B00A366EF /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		BC073BED22EF1B0400A366EF /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libwebsockets.xcodeproj; path = deps/libwebsockets/libwebsockets.xcodeproj; sourceTree = "<group>"; };
 		BCD8C8F022E9BA5B00FE7CD4 /* Mr. Puppet Hub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mr. Puppet Hub.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,7 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD8C92B22EA0D1700FE7CD4 /* libSwiftSerial.a in Frameworks */,
+				BC073C0822EF2EC900A366EF /* libSwiftSerial.a in Frameworks */,
+				BC073C4422F069BA00A366EF /* libwebsockets.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,13 +125,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC073BFF22EF1DB400A366EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC073C2E22F0699A00A366EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC073C3B22F0699A00A366EF /* libwebsockets-test-lejp */,
+				BC073C3D22F0699A00A366EF /* libwebsockets-test-server */,
+				BC073C3F22F0699A00A366EF /* libwebsockets-test-server-extpoll */,
+				BC073C4122F0699A00A366EF /* libwebsockets.a */,
+				BC073C4322F0699A00A366EF /* libwebsockets.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BCD8C8E722E9BA5B00FE7CD4 = {
 			isa = PBXGroup;
 			children = (
 				BCD8C8F222E9BA5B00FE7CD4 /* Puppet Hub */,
 				BCD8C91E22EA0A9B00FE7CD4 /* SwiftSerial */,
-				BCD8C90522E9BB9C00FE7CD4 /* Frameworks */,
 				BCD8C8F122E9BA5B00FE7CD4 /* Products */,
+				BC073BFF22EF1DB400A366EF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,20 +167,15 @@
 		BCD8C8F222E9BA5B00FE7CD4 /* Puppet Hub */ = {
 			isa = PBXGroup;
 			children = (
+				BC073BED22EF1B0400A366EF /* Bridging-Header.h */,
 				BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */,
+				BC073BE822EF1A7B00A366EF /* Server.swift */,
 				BCD8C92D22EA0E1E00FE7CD4 /* Serial.swift */,
 				BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */,
 				BCD8C8F722E9BA5B00FE7CD4 /* MainMenu.xib */,
 				BCD8C8FA22E9BA5B00FE7CD4 /* Info.plist */,
 			);
 			path = "Puppet Hub";
-			sourceTree = "<group>";
-		};
-		BCD8C90522E9BB9C00FE7CD4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BCD8C91E22EA0A9B00FE7CD4 /* SwiftSerial */ = {
@@ -121,10 +206,13 @@
 				BCD8C8EC22E9BA5B00FE7CD4 /* Sources */,
 				BCD8C8ED22E9BA5B00FE7CD4 /* Frameworks */,
 				BCD8C8EE22E9BA5B00FE7CD4 /* Resources */,
+				BC073C0B22EF2EE000A366EF /* Embed Libraries */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BC073C4922F069DD00A366EF /* PBXTargetDependency */,
+				BC073C4B22F069DD00A366EF /* PBXTargetDependency */,
 				BCD8C92822EA0ABA00FE7CD4 /* PBXTargetDependency */,
 			);
 			name = "Mr. Puppet Hub";
@@ -183,6 +271,12 @@
 			mainGroup = BCD8C8E722E9BA5B00FE7CD4;
 			productRefGroup = BCD8C8F122E9BA5B00FE7CD4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BC073C2E22F0699A00A366EF /* Products */;
+					ProjectRef = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BCD8C8EF22E9BA5B00FE7CD4 /* Mr. Puppet Hub */,
@@ -190,6 +284,45 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BC073C3B22F0699A00A366EF /* libwebsockets-test-lejp */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "libwebsockets-test-lejp";
+			remoteRef = BC073C3A22F0699A00A366EF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC073C3D22F0699A00A366EF /* libwebsockets-test-server */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "libwebsockets-test-server";
+			remoteRef = BC073C3C22F0699A00A366EF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC073C3F22F0699A00A366EF /* libwebsockets-test-server-extpoll */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "libwebsockets-test-server-extpoll";
+			remoteRef = BC073C3E22F0699A00A366EF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC073C4122F0699A00A366EF /* libwebsockets.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libwebsockets.a;
+			remoteRef = BC073C4022F0699A00A366EF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC073C4322F0699A00A366EF /* libwebsockets.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			name = libwebsockets.dylib;
+			path = libwebsockets.14.dylib;
+			remoteRef = BC073C4222F0699A00A366EF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BCD8C8EE22E9BA5B00FE7CD4 /* Resources */ = {
@@ -209,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD8C8F422E9BA5B00FE7CD4 /* AppDelegate.swift in Sources */,
+				BC073BE922EF1A7B00A366EF /* Server.swift in Sources */,
 				BCD8C92E22EA0E1E00FE7CD4 /* Serial.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +358,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BC073C4922F069DD00A366EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = websockets;
+			targetProxy = BC073C4822F069DD00A366EF /* PBXContainerItemProxy */;
+		};
+		BC073C4B22F069DD00A366EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = websockets_shared;
+			targetProxy = BC073C4A22F069DD00A366EF /* PBXContainerItemProxy */;
+		};
 		BCD8C92822EA0ABA00FE7CD4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BCD8C91C22EA0A9B00FE7CD4 /* SwiftSerial */;
@@ -367,13 +511,27 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = H7BXRR563Q;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/deps/libwebsockets/include",
+					"$(SRCROOT)/deps/libwebsockets/plugins",
+					"$(SRCROOT)/deps/libwebsockets/",
+					"$(SRCROOT)/deps/libwebsockets/lib",
+				);
 				INFOPLIST_FILE = "Puppet Hub/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/deps/libwebsockets/lib/Debug/**";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"$(SRCROOT)/deps/libwebsockets/lib/Debug/libwebsockets.a",
+					"-lm",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinko.Puppet-Hub";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Puppet Hub/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -384,13 +542,27 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = H7BXRR563Q;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/deps/libwebsockets/include",
+					"$(SRCROOT)/deps/libwebsockets/plugins",
+					"$(SRCROOT)/deps/libwebsockets/",
+					"$(SRCROOT)/deps/libwebsockets/lib",
+				);
 				INFOPLIST_FILE = "Puppet Hub/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/deps/libwebsockets/lib/Debug/**";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"$(SRCROOT)/deps/libwebsockets/lib/Debug/libwebsockets.a",
+					"-lm",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thinko.Puppet-Hub";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Puppet Hub/Bridging-Header.h";
 			};
 			name = Release;
 		};

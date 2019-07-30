@@ -36,6 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let serialPortPath = ProcessInfo.processInfo.environment["SERIAL_PORT"] ?? "/dev/cu.SLAB_USBtoUART"
         self.connectToPort(path: serialPortPath)
+
+        DispatchQueue.global(qos: .background).async {
+            WebSocketServer.start(port: 3000)
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -143,6 +147,7 @@ extension AppDelegate: SerialDelegate {
 
     func serial(_ serial: Serial, didReadLine string: String) {
         dispatchMainSync {
+            WebSocketServer.broadcast(message: string)
             self.appendLog(string, type: .echo)
         }
     }
