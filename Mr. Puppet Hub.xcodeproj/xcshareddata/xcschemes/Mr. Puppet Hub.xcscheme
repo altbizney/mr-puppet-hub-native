@@ -61,13 +61,6 @@
             ReferencedContainer = "container:Mr. Puppet Hub.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "SERIAL_PORT"
-            value = "/Users/ehw/puppet"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

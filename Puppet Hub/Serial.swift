@@ -50,8 +50,8 @@ final class Serial {
         }
 
         self.port.setSettings(
-            receiveRate: BaudRate(rawValue: 250000),
-            transmitRate: BaudRate(rawValue: 250000),
+            receiveRate: BaudRate(rawValue: 115200),
+            transmitRate: BaudRate(rawValue: 115200),
             minimumBytesToRead: 1,
             timeout: 0
         )
