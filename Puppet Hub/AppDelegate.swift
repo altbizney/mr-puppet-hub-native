@@ -10,6 +10,7 @@ import Cocoa
 import SwiftSerial
 import IOKit
 import IOKit.serial
+import IOKit.kext
 
 func dispatchMainSync(_ block: () -> Void) {
     if Thread.current.isMainThread {
@@ -24,11 +25,7 @@ enum LogType: String {
     case echo = "ECHO"
 }
 
-func getDeviceProperty(device: io_object_t, key: String) -> AnyObject? {
-    let cfKey = key as CFString
-    let propValue = IORegistryEntryCreateCFProperty(device, cfKey, kCFAllocatorDefault, 0)
-    return propValue?.takeUnretainedValue()
-}
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -57,24 +54,46 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             WebSocketServer.start(port: 3000)
         }
 
-        var iterator = io_iterator_t()
-        IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching(kIOSerialBSDServiceValue), &iterator)
+        let devices = availableSerialDevices()
+        self.devices = devices.map({ $1 })
 
-        while case let device = IOIteratorNext(iterator), device != MACH_PORT_NULL {
-            guard let calloutDevice = getDeviceProperty(device: device, key: kIOCalloutDeviceKey) as? String else {
-                continue
-            }
-
-            devices.append(calloutDevice)
-
-            print(calloutDevice)
-        }
-
-//        if let device = devices.last {
-//            self.connectToPort(path: device)
-//        }
+        print(devices)
 
         self.reloadToolbar()
+
+        if let info = KextManagerCopyLoadedKextInfo(nil, nil)?.takeUnretainedValue() as? [String: AnyObject], info["com.silabs.driver.CP210xVCPDriver"] == nil {
+            let error = NSError(domain: "com.thinko.Puppet-Hub", code: -222, userInfo: [NSLocalizedDescriptionKey: "Missing USB driver"])
+            let alert = NSAlert(error: error)
+            alert.messageText = "Missing USB driver"
+            alert.informativeText = """
+            Download and install the USB Driver for macOS.
+            """
+
+            alert.addButton(withTitle: "Download Driver")
+            alert.addButton(withTitle: "Cancel")
+
+            let result = alert.runModal()
+
+            if result == .alertFirstButtonReturn {
+                let url = URL(string: "https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers")!
+//                let url = URL(string: "https://www.silabs.com/documents/public/software/Mac_OSX_VCP_Driver.zip")!
+                NSWorkspace.shared.open(url)
+            }
+
+            exit(EXIT_FAILURE)
+
+        } else if self.devices.isEmpty {
+            let error = NSError(domain: "com.thinko.Puppet-Hub", code: -222, userInfo: [NSLocalizedDescriptionKey: "No compatiable devices found"])
+            let alert = NSAlert(error: error)
+            alert.messageText = "No compatiable devices found"
+            alert.informativeText = """
+            Mr. Puppet Hub couldn't find any USB devices to connect to. \
+            Please check you have the USB drivers installed and Mr Puppet \
+            is plugged in.
+            """
+
+            alert.runModal()
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -97,12 +116,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let logEntry = "\(Date()) [\(type.rawValue)] \(string)"
         self.logs.append(logEntry)
 
+        let limit = 26
+
+        if self.logs.count > limit {
+            self.logs.removeFirst()
+        }
+
         self.throttler.throttle { [weak self] in
             guard let self = self else {
                 return
             }
 
-            self.textView.string = self.logs.suffix(300).joined(separator: "\n")
+            self.textView.string = self.logs.joined(separator: "\n")
 
             if self.textView.visibleRect.maxY - self.textView.bounds.maxY >= 0 {
                 self.textView.scrollToEndOfDocument(nil)
@@ -163,7 +188,8 @@ extension AppDelegate: NSToolbarDelegate {
             button.pullsDown = true
             button.addItem(withTitle: "Connect to Device")
             button.addItems(withTitles: self.devices)
-            button.isEnabled = (self.serialPort?.isConnected != true)
+            button.isEnabled = (self.devices.isEmpty == false && self.serialPort?.isConnected != true)
+            button.sizeToFit()
 
             let item = NSToolbarItem(itemIdentifier: itemIdentifier)
             item.view = button
