@@ -72,15 +72,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             alert.addButton(withTitle: "Download Driver")
             alert.addButton(withTitle: "Cancel")
 
-            let result = alert.runModal()
+            alert.beginSheetModal(for: self.window) { (result) in
+                guard result == .alertFirstButtonReturn else {
+                    return
+                }
 
-            if result == .alertFirstButtonReturn {
                 let url = URL(string: "https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers")!
-//                let url = URL(string: "https://www.silabs.com/documents/public/software/Mac_OSX_VCP_Driver.zip")!
                 NSWorkspace.shared.open(url)
+                exit(EXIT_FAILURE)
             }
-
-            exit(EXIT_FAILURE)
 
         } else if self.devices.isEmpty {
             let error = NSError(domain: "com.thinko.Puppet-Hub", code: -222, userInfo: [NSLocalizedDescriptionKey: "No compatiable devices found"])
@@ -92,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             is plugged in.
             """
 
-            alert.runModal()
+            alert.beginSheetModal(for: self.window, completionHandler: nil)
         }
     }
 
@@ -110,6 +110,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.global(qos: .userInitiated).async {
             self.serialPort?.run()
         }
+    }
+
+    private func disconnect() {
+        self.serialPort?.close()
     }
 
     private func appendLog(_ string: String, type: LogType) {
@@ -159,6 +163,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.connectToPort(path: serialPortPath)
     }
 
+    @objc func handleDisconnectButton(_ sender: Any) {
+        self.disconnect()
+    }
+
 }
 
 extension AppDelegate: NSToolbarDelegate {
@@ -166,10 +174,16 @@ extension AppDelegate: NSToolbarDelegate {
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
         return [
             NSToolbarItem.Identifier("select-device"),
-            NSToolbarItem.Identifier("reconnect"),
+            NSToolbarItem.Identifier("disconnect"),
             NSToolbarItem.Identifier.flexibleSpace,
             NSToolbarItem.Identifier("server-info"),
-        ]
+        ].filter({ ident in
+            if ident.rawValue == "disconnect" && self.serialPort?.isConnected != true {
+                return false
+            } else {
+                return true
+            }
+        })
     }
 
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
@@ -190,6 +204,15 @@ extension AppDelegate: NSToolbarDelegate {
             button.addItems(withTitles: self.devices)
             button.isEnabled = (self.devices.isEmpty == false && self.serialPort?.isConnected != true)
             button.sizeToFit()
+
+            let item = NSToolbarItem(itemIdentifier: itemIdentifier)
+            item.view = button
+
+            return item
+
+        case "disconnect":
+            let button = NSButton(title: "Disconnect", target: self, action: #selector(self.handleDisconnectButton(_:)))
+            button.bezelStyle = .texturedRounded
 
             let item = NSToolbarItem(itemIdentifier: itemIdentifier)
             item.view = button
