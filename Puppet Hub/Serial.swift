@@ -25,6 +25,8 @@ final class Serial {
 
     var isConnected: Bool = false
 
+    private var didDisconnect = false
+
     weak var delegate: SerialDelegate?
 
 
@@ -56,7 +58,7 @@ final class Serial {
             timeout: 0
         )
 
-        while true {
+        while true && self.didDisconnect == false {
             do {
                 let line = try self.port.readLine()
                 self.delegate?.serial(self, didReadLine: line)
@@ -64,6 +66,11 @@ final class Serial {
                 debugPrint(error)
             }
         }
+    }
+
+    func close() {
+        self.didDisconnect = true
+        self.port.close()
     }
 
 }
