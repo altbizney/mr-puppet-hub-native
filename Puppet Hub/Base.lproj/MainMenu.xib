@@ -346,25 +346,25 @@
         <window title="Mr. Puppet Hub" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" titleVisibility="hidden" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="880" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="1000" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-            <value key="minSize" type="size" width="880" height="360"/>
+            <value key="minSize" type="size" width="1000" height="360"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="880" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="1000" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" scrollerKnobStyle="light" translatesAutoresizingMaskIntoConstraints="NO" id="vjZ-lp-9IE">
-                        <rect key="frame" x="0.0" y="0.0" width="880" height="360"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="360"/>
                         <clipView key="contentView" copiesOnScroll="NO" id="Kqo-zr-GVy">
-                            <rect key="frame" x="0.0" y="0.0" width="880" height="360"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1000" height="360"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" smartInsertDelete="YES" id="k8J-sb-Ru8">
-                                    <rect key="frame" x="0.0" y="0.0" width="880" height="360"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="360"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <size key="minSize" width="880" height="360"/>
+                                    <size key="minSize" width="1000" height="360"/>
                                     <size key="maxSize" width="1030" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -405,7 +405,7 @@ CiAgA
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="S1x-Nc-Pp2">
-                            <rect key="frame" x="864" y="0.0" width="16" height="360"/>
+                            <rect key="frame" x="984" y="0.0" width="16" height="360"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
