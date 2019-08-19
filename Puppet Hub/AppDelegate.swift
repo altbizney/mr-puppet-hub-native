@@ -11,6 +11,7 @@ import SwiftSerial
 import IOKit
 import IOKit.serial
 import IOKit.kext
+import Sparkle
 
 func dispatchMainSync(_ block: () -> Void) {
     if Thread.current.isMainThread {
@@ -60,6 +61,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print(devices)
 
         self.reloadToolbar()
+
+        SUUpdater.shared().feedURL = URL(string: "https://mr-puppet.herokuapp.com/hub-macos/appcast.xml")
+        SUUpdater.shared().automaticallyChecksForUpdates = true
+        SUUpdater.shared().checkForUpdatesInBackground()
 
         if let info = KextManagerCopyLoadedKextInfo(nil, nil)?.takeUnretainedValue() as? [String: AnyObject], info["com.silabs.driver.CP210xVCPDriver"] == nil {
             let error = NSError(domain: "com.thinko.Puppet-Hub", code: -222, userInfo: [NSLocalizedDescriptionKey: "Missing USB driver"])

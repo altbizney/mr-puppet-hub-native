@@ -2,3 +2,6 @@
 	path = libwebsockets
 	url = https://libwebsockets.org/repo/libwebsockets
 	ignore = dirty
+[submodule "sparkle-cli-utils"]
+	path = sparkle-cli-utils
+	url = git@github.com:yothinko/sparkle-cli-utils.git
