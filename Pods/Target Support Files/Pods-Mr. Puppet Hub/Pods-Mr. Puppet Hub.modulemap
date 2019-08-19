@@ -1,0 +1,6 @@
+framework module Pods_Mr__Puppet_Hub {
+  umbrella header "Pods-Mr. Puppet Hub-umbrella.h"
+
+  export *
+  module * { export * }
+}

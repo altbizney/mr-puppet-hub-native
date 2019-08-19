@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CA52AB940C28A2A4640DDF7 /* Pods_Mr__Puppet_Hub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F97E8DDDBC49DD7BAB1751ED /* Pods_Mr__Puppet_Hub.framework */; };
 		BC073BE922EF1A7B00A366EF /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC073BE822EF1A7B00A366EF /* Server.swift */; };
 		BC073C0822EF2EC900A366EF /* libSwiftSerial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */; };
 		BC073C4422F069BA00A366EF /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC073C4122F0699A00A366EF /* libwebsockets.a */; };
@@ -21,27 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BC073C3A22F0699A00A366EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8CDB9AB5DAA34125AC8837AC;
-			remoteInfo = "test-lejp";
-		};
-		BC073C3C22F0699A00A366EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FA86B36BEC1E4D049A163F28;
-			remoteInfo = "test-server";
-		};
-		BC073C3E22F0699A00A366EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 644AC1D6562C43E78786E2F4;
-			remoteInfo = "test-server-extpoll";
-		};
 		BC073C4022F0699A00A366EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
@@ -60,15 +40,8 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 9295FFA0A8844CCF883D3836;
+			remoteGlobalIDString = CD6A979500FA4E7E93F3AB91;
 			remoteInfo = websockets;
-		};
-		BC073C4A22F069DD00A366EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 692D1A60B0BD46E185CD2200;
-			remoteInfo = websockets_shared;
 		};
 		BCD8C92722EA0ABA00FE7CD4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -94,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4BEEE60E68920CE83776609B /* Pods-Mr. Puppet Hub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. Puppet Hub.release.xcconfig"; path = "Target Support Files/Pods-Mr. Puppet Hub/Pods-Mr. Puppet Hub.release.xcconfig"; sourceTree = "<group>"; };
 		BC073BE822EF1A7B00A366EF /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		BC073BED22EF1B0400A366EF /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libwebsockets.xcodeproj; path = deps/libwebsockets/libwebsockets.xcodeproj; sourceTree = "<group>"; };
@@ -107,6 +81,8 @@
 		BCD8C90922E9BBD500FE7CD4 /* SwiftSerial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftSerial.swift; path = SwiftSerial/SwiftSerial.swift; sourceTree = SOURCE_ROOT; };
 		BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSwiftSerial.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD8C92D22EA0E1E00FE7CD4 /* Serial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serial.swift; sourceTree = "<group>"; };
+		F97E8DDDBC49DD7BAB1751ED /* Pods_Mr__Puppet_Hub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mr__Puppet_Hub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAF480D27C41A5330443219E /* Pods-Mr. Puppet Hub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. Puppet Hub.debug.xcconfig"; path = "Target Support Files/Pods-Mr. Puppet Hub/Pods-Mr. Puppet Hub.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +92,7 @@
 			files = (
 				BC073C0822EF2EC900A366EF /* libSwiftSerial.a in Frameworks */,
 				BC073C4422F069BA00A366EF /* libwebsockets.a in Frameworks */,
+				9CA52AB940C28A2A4640DDF7 /* Pods_Mr__Puppet_Hub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */,
+				F97E8DDDBC49DD7BAB1751ED /* Pods_Mr__Puppet_Hub.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,9 +118,6 @@
 		BC073C2E22F0699A00A366EF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC073C3B22F0699A00A366EF /* libwebsockets-test-lejp */,
-				BC073C3D22F0699A00A366EF /* libwebsockets-test-server */,
-				BC073C3F22F0699A00A366EF /* libwebsockets-test-server-extpoll */,
 				BC073C4122F0699A00A366EF /* libwebsockets.a */,
 				BC073C4322F0699A00A366EF /* libwebsockets.dylib */,
 			);
@@ -156,6 +131,7 @@
 				BCD8C91E22EA0A9B00FE7CD4 /* SwiftSerial */,
 				BCD8C8F122E9BA5B00FE7CD4 /* Products */,
 				BC073BFF22EF1DB400A366EF /* Frameworks */,
+				F59DF20F645FD05FCE8E4778 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +168,15 @@
 			path = SwiftSerial;
 			sourceTree = "<group>";
 		};
+		F59DF20F645FD05FCE8E4778 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAF480D27C41A5330443219E /* Pods-Mr. Puppet Hub.debug.xcconfig */,
+				4BEEE60E68920CE83776609B /* Pods-Mr. Puppet Hub.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -209,16 +194,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCD8C8FE22E9BA5B00FE7CD4 /* Build configuration list for PBXNativeTarget "Mr. Puppet Hub" */;
 			buildPhases = (
+				69E73887112EB455AE8EE214 /* [CP] Check Pods Manifest.lock */,
 				BCD8C8EC22E9BA5B00FE7CD4 /* Sources */,
 				BCD8C8ED22E9BA5B00FE7CD4 /* Frameworks */,
 				BCD8C8EE22E9BA5B00FE7CD4 /* Resources */,
 				BC073C0B22EF2EE000A366EF /* Embed Libraries */,
+				FA9EAFD7A32424EECF59EFEA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				BC073C4922F069DD00A366EF /* PBXTargetDependency */,
-				BC073C4B22F069DD00A366EF /* PBXTargetDependency */,
 				BCD8C92822EA0ABA00FE7CD4 /* PBXTargetDependency */,
 			);
 			name = "Mr. Puppet Hub";
@@ -292,27 +278,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		BC073C3B22F0699A00A366EF /* libwebsockets-test-lejp */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = "libwebsockets-test-lejp";
-			remoteRef = BC073C3A22F0699A00A366EF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BC073C3D22F0699A00A366EF /* libwebsockets-test-server */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = "libwebsockets-test-server";
-			remoteRef = BC073C3C22F0699A00A366EF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BC073C3F22F0699A00A366EF /* libwebsockets-test-server-extpoll */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = "libwebsockets-test-server-extpoll";
-			remoteRef = BC073C3E22F0699A00A366EF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		BC073C4122F0699A00A366EF /* libwebsockets.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -342,6 +307,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		69E73887112EB455AE8EE214 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mr. Puppet Hub-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA9EAFD7A32424EECF59EFEA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mr. Puppet Hub/Pods-Mr. Puppet Hub-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mr. Puppet Hub/Pods-Mr. Puppet Hub-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mr. Puppet Hub/Pods-Mr. Puppet Hub-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BCD8C8EC22E9BA5B00FE7CD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -370,11 +377,6 @@
 			isa = PBXTargetDependency;
 			name = websockets;
 			targetProxy = BC073C4822F069DD00A366EF /* PBXContainerItemProxy */;
-		};
-		BC073C4B22F069DD00A366EF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = websockets_shared;
-			targetProxy = BC073C4A22F069DD00A366EF /* PBXContainerItemProxy */;
 		};
 		BCD8C92822EA0ABA00FE7CD4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -514,6 +516,7 @@
 		};
 		BCD8C8FF22E9BA5B00FE7CD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAF480D27C41A5330443219E /* Pods-Mr. Puppet Hub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -545,6 +548,7 @@
 		};
 		BCD8C90022E9BA5B00FE7CD4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BEEE60E68920CE83776609B /* Pods-Mr. Puppet Hub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

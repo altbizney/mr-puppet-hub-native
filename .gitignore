@@ -107,3 +107,5 @@ fastlane/test_output
 # End of https://www.gitignore.io/api/xcode,swift,macos
 
 /deps
+/release
+/private.pem

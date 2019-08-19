@@ -1,0 +1,45 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:mac)
+
+platform :mac do
+
+  lane :build_mac do
+    build_app(
+      scheme: "Mr. Puppet Hub",
+      workspace: "Mr. Puppet Hub.xcworkspace",
+      xcargs: "-allowProvisioningUpdates",
+      output_directory: "release"
+    )
+
+    dmg(
+      path: "release/Mr\. Puppet Hub.app",
+      output_path: "release/Mr\. Puppet Hub.dmg",
+      # includes single quotes to work around dmg plugin bug https://github.com/advoryanskiy/fastlane-plugin-dmg/pull/3
+      volume_name: "'Mr. Puppet Hub'"
+    )
+  end
+  
+  lane :package_zip do
+    zip(
+      path: "release/Mr. Puppet Hub.app",
+      output_path: "release/Mr. Puppet Hub.app.zip",
+      verbose: false,
+      symlinks: true
+    )
+  end
+
+end
