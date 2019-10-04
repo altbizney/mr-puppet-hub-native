@@ -27,15 +27,14 @@ enum LogType: String {
 }
 
 
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var textView: NSTextView!
 
-    var devices: [String] = []
-    var serialPort: Serial?
+    lazy var controller = Controller()
+    lazy var deviceMenuDelegate = DeviceMenuDelegate()
 
     lazy var logs = [self.textView.string]
     lazy var throttler = Throttler(minimumDelay: 0.05, queue: .main)
@@ -51,14 +50,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         self.reloadToolbar()
 
-        DispatchQueue.global(qos: .background).async {
-            WebSocketServer.start(port: 3000)
-        }
+        self.controller.delegate = self
+        self.controller.serialDelegate = self
 
-        let devices = availableSerialDevices()
-        self.devices = devices.map({ $1 })
-
-        print(devices)
+        self.controller.startWebServer(port: 3000)
 
         self.reloadToolbar()
 
@@ -66,38 +61,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         SUUpdater.shared().automaticallyChecksForUpdates = true
         SUUpdater.shared().checkForUpdatesInBackground()
 
-        if let info = KextManagerCopyLoadedKextInfo(nil, nil)?.takeUnretainedValue() as? [String: AnyObject], info["com.silabs.driver.CP210xVCPDriver"] == nil {
-            let error = NSError(domain: "com.thinko.Puppet-Hub", code: -222, userInfo: [NSLocalizedDescriptionKey: "Missing USB driver"])
-            let alert = NSAlert(error: error)
-            alert.messageText = "Missing USB driver"
-            alert.informativeText = """
-            Download and install the USB Driver for macOS.
-            """
-
-            alert.addButton(withTitle: "Download Driver")
-            alert.addButton(withTitle: "Cancel")
-
-            alert.beginSheetModal(for: self.window) { (result) in
-                guard result == .alertFirstButtonReturn else {
-                    return
-                }
-
-                let url = URL(string: "https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers")!
-                NSWorkspace.shared.open(url)
-                exit(EXIT_FAILURE)
-            }
-
-        } else if self.devices.isEmpty {
-            let error = NSError(domain: "com.thinko.Puppet-Hub", code: -222, userInfo: [NSLocalizedDescriptionKey: "No compatiable devices found"])
-            let alert = NSAlert(error: error)
-            alert.messageText = "No compatiable devices found"
-            alert.informativeText = """
-            Mr. Puppet Hub couldn't find any USB devices to connect to. \
-            Please check you have the USB drivers installed and Mr Puppet \
-            is plugged in.
-            """
-
-            alert.beginSheetModal(for: self.window, completionHandler: nil)
+        if DriverInfo.isDriverInstalled == false {
+            self.presentMissingDriverError()
+        } else if self.deviceMenuDelegate.devices.isEmpty {
+            self.presentNoDevicesError()
         }
     }
 
@@ -106,19 +73,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 
-    private func connectToPort(path: String) {
-        self.serialPort = Serial(path: path)
-        self.serialPort?.delegate = self
+    private func presentNoDevicesError() {
+        let error = NSError(domain: "com.thinko.Puppet-Hub", code: -222, userInfo: [NSLocalizedDescriptionKey: "No compatiable devices found"])
+        let alert = NSAlert(error: error)
+        alert.messageText = "No compatiable devices found"
+        alert.informativeText = """
+        Mr. Puppet Hub couldn't find any USB devices to connect to. \
+        Please check you have the USB drivers installed and Mr Puppet \
+        is plugged in.
+        """
 
-        self.appendLog("Connecting...", type: .info)
+        alert.beginSheetModal(for: self.window, completionHandler: nil)
+    }
 
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.serialPort?.run()
+    private func presentMissingDriverError() {
+        let error = NSError(domain: "com.thinko.Puppet-Hub", code: -222, userInfo: [NSLocalizedDescriptionKey: "Missing USB driver"])
+        let alert = NSAlert(error: error)
+        alert.messageText = "Missing USB driver"
+        alert.informativeText = """
+        Download and install the USB Driver for macOS.
+        """
+
+        alert.addButton(withTitle: "Download Driver")
+        alert.addButton(withTitle: "Cancel")
+
+        alert.beginSheetModal(for: self.window) { (result) in
+            guard result == .alertFirstButtonReturn else {
+                return
+            }
+
+            let url = URL(string: "https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers")!
+            NSWorkspace.shared.open(url)
+            exit(EXIT_FAILURE)
         }
     }
 
-    private func disconnect() {
-        self.serialPort?.close()
+    private func connectToPort(path: String) {
+        self.appendLog("Connecting...", type: .info)
+        self.controller.connectToPort(path: path)
     }
 
     private func appendLog(_ string: String, type: LogType) {
@@ -152,16 +144,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.window.toolbar = toolbar
     }
 
+    func openFile() {
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.allowsMultipleSelection = false
+
+        openPanel.beginSheetModal(for: self.window) { (response) in
+            guard response == .OK else {
+                return
+            }
+
+            guard let fileURL = openPanel.urls.first else {
+                return
+            }
+
+            self.controller.readFile(at: fileURL)
+        }
+    }
+
     @objc func handleDeviceSelectButton(_ sender: Any) {
-        guard let button = sender as? NSPopUpButton, let serialPortPath = button.selectedItem?.title else {
+        guard let button = sender as? NSPopUpButton, let selectedItem = button.selectedItem else {
             return
         }
 
-        self.connectToPort(path: serialPortPath)
+        if selectedItem.identifier?.rawValue == "com.thinko.Puppet-Hub.source.file" {
+            self.openFile()
+
+        } else {
+            let serialPortPath = selectedItem.title
+            self.controller.connectToPort(path: serialPortPath)
+        }
     }
 
     @objc func handleReconnectButton(_ sender: Any) {
-        guard let serialPortPath = self.serialPort?.name else {
+        guard let serialPortPath = self.controller.serialPort?.name else {
             return
         }
 
@@ -169,7 +186,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func handleDisconnectButton(_ sender: Any) {
-        self.disconnect()
+        self.controller.disconnect()
     }
 
 }
@@ -182,13 +199,7 @@ extension AppDelegate: NSToolbarDelegate {
             NSToolbarItem.Identifier("disconnect"),
             NSToolbarItem.Identifier.flexibleSpace,
             NSToolbarItem.Identifier("server-info"),
-        ].filter({ ident in
-            if ident.rawValue == "disconnect" && self.serialPort?.isConnected != true {
-                return false
-            } else {
-                return true
-            }
-        })
+        ]
     }
 
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
@@ -202,13 +213,15 @@ extension AppDelegate: NSToolbarDelegate {
     func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
         switch itemIdentifier.rawValue {
         case "select-device":
+            let deviceMenu = NSMenu(title: "Select Source")
+            self.deviceMenuDelegate.configureMenu(deviceMenu)
+
             let button = NSPopUpButton(title: "", target: self, action: #selector(self.handleDeviceSelectButton(_:)))
             button.bezelStyle = .texturedRounded
             button.pullsDown = true
-            button.addItem(withTitle: "Connect to Device")
-            button.addItems(withTitles: self.devices)
-            button.isEnabled = (self.devices.isEmpty == false && self.serialPort?.isConnected != true)
+            button.isEnabled = (self.controller.isConnected != true)
             button.sizeToFit()
+            button.menu = deviceMenu
 
             let item = NSToolbarItem(itemIdentifier: itemIdentifier)
             item.view = button
@@ -218,6 +231,7 @@ extension AppDelegate: NSToolbarDelegate {
         case "disconnect":
             let button = NSButton(title: "Disconnect", target: self, action: #selector(self.handleDisconnectButton(_:)))
             button.bezelStyle = .texturedRounded
+            button.isEnabled = (self.controller.isConnected == true)
 
             let item = NSToolbarItem(itemIdentifier: itemIdentifier)
             item.view = button
@@ -228,7 +242,7 @@ extension AppDelegate: NSToolbarDelegate {
             let button = NSButton(image: NSImage(named: "NSRefreshTemplate")!, target: self, action: #selector(self.handleReconnectButton(_:)))
             button.toolTip = "Reconnect"
             button.bezelStyle = .texturedRounded
-            button.isEnabled = (self.serialPort?.isConnected == false)
+            button.isEnabled = (self.controller.isConnected == false)
 
             let item = NSToolbarItem(itemIdentifier: itemIdentifier)
             item.view = button
@@ -255,17 +269,11 @@ extension AppDelegate: NSToolbarDelegate {
 extension AppDelegate: SerialDelegate {
 
     func serialDidConnect(_ serial: Serial) {
-        dispatchMainSync {
-            self.reloadToolbar()
-            self.appendLog("Connected to \(serial.name)", type: .info)
-        }
+
     }
 
     func serialDidDisconnect(_ serial: Serial) {
-        dispatchMainSync {
-            self.reloadToolbar()
-            self.appendLog("Disconnected...", type: .info)
-        }
+
     }
 
     func serial(_ serial: Serial, didFailConnectWithError error: Error) {
@@ -284,9 +292,30 @@ extension AppDelegate: SerialDelegate {
     }
 
     func serial(_ serial: Serial, didReadLine string: String) {
+
+    }
+
+}
+
+extension AppDelegate: ControllerDelegate {
+
+    func controller(_ controller: Controller, didConnectToSourceWithIdentifier identifier: String) {
         dispatchMainSync {
-            WebSocketServer.broadcast(message: string)
-            self.appendLog(string, type: .echo)
+            self.reloadToolbar()
+            self.appendLog("Connected to \(identifier)", type: .info)
+        }
+    }
+
+    func controllerDidDisconnectSource(_ controller: Controller) {
+        dispatchMainSync {
+            self.reloadToolbar()
+            self.appendLog("Disconnected...", type: .info)
+        }
+    }
+
+    func controller(_ controller: Controller, didBroadcastMessage message: String) {
+        dispatchMainSync {
+            self.appendLog(message, type: .echo)
         }
     }
 

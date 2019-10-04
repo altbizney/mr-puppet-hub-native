@@ -12,6 +12,9 @@
 		BC073C0822EF2EC900A366EF /* libSwiftSerial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */; };
 		BC073C4422F069BA00A366EF /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC073C4122F0699A00A366EF /* libwebsockets.a */; };
 		BC073C4522F069BC00A366EF /* libwebsockets.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = BC073C4322F0699A00A366EF /* libwebsockets.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BC68360C2347B5BC009B0229 /* DeviceMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC68360B2347B5BC009B0229 /* DeviceMenuDelegate.swift */; };
+		BC6836142347B5E3009B0229 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6836132347B5E3009B0229 /* Controller.swift */; };
+		BC6836162347B749009B0229 /* DriverInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6836152347B749009B0229 /* DriverInfo.swift */; };
 		BC762F3D22F358B800694F12 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC762F3C22F358B800694F12 /* Throttler.swift */; };
 		BC762F4722F44DCA00694F12 /* IODevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC762F4622F44DCA00694F12 /* IODevice.swift */; };
 		BCD8C8F422E9BA5B00FE7CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */; };
@@ -71,6 +74,9 @@
 		BC073BE822EF1A7B00A366EF /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		BC073BED22EF1B0400A366EF /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libwebsockets.xcodeproj; path = deps/libwebsockets/libwebsockets.xcodeproj; sourceTree = "<group>"; };
+		BC68360B2347B5BC009B0229 /* DeviceMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMenuDelegate.swift; sourceTree = "<group>"; };
+		BC6836132347B5E3009B0229 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		BC6836152347B749009B0229 /* DriverInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverInfo.swift; sourceTree = "<group>"; };
 		BC762F3C22F358B800694F12 /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		BC762F4622F44DCA00694F12 /* IODevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IODevice.swift; sourceTree = "<group>"; };
 		BCD8C8F022E9BA5B00FE7CD4 /* Mr. Puppet Hub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mr. Puppet Hub.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +155,9 @@
 			children = (
 				BC073BED22EF1B0400A366EF /* Bridging-Header.h */,
 				BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */,
+				BC68360B2347B5BC009B0229 /* DeviceMenuDelegate.swift */,
+				BC6836132347B5E3009B0229 /* Controller.swift */,
+				BC6836152347B749009B0229 /* DriverInfo.swift */,
 				BC762F4622F44DCA00694F12 /* IODevice.swift */,
 				BC762F3C22F358B800694F12 /* Throttler.swift */,
 				BC073BE822EF1A7B00A366EF /* Server.swift */,
@@ -357,8 +366,11 @@
 				BCD8C8F422E9BA5B00FE7CD4 /* AppDelegate.swift in Sources */,
 				BC762F4722F44DCA00694F12 /* IODevice.swift in Sources */,
 				BC073BE922EF1A7B00A366EF /* Server.swift in Sources */,
+				BC6836162347B749009B0229 /* DriverInfo.swift in Sources */,
+				BC68360C2347B5BC009B0229 /* DeviceMenuDelegate.swift in Sources */,
 				BC762F3D22F358B800694F12 /* Throttler.swift in Sources */,
 				BCD8C92E22EA0E1E00FE7CD4 /* Serial.swift in Sources */,
+				BC6836142347B5E3009B0229 /* Controller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
