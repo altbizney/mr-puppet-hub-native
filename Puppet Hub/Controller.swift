@@ -10,6 +10,7 @@ import Foundation
 
 protocol ControllerDelegate: class {
     func controller(_ controller: Controller, didConnectToSourceWithIdentifier identifier: String)
+    func controller(_ controller: Controller, didFailToConnectToSourceWithError error: Error)
     func controllerDidDisconnectSource(_ controller: Controller)
     func controller(_ controller: Controller, didBroadcastMessage message: String)
 }
@@ -45,10 +46,14 @@ class Controller {
 
     func readFile(at url: URL) {
         guard let data = FileManager.default.contents(atPath: url.path) else {
+            let error = NSError(domain: "com.thinko.Puppet-Hub.controller", code: -43537, userInfo: [NSLocalizedDescriptionKey: "Unable to read contents of file"])
+            self.delegate?.controller(self, didFailToConnectToSourceWithError: error)
             return
         }
 
         guard let str = String(data: data, encoding: .utf8) else {
+            let error = NSError(domain: "com.thinko.Puppet-Hub.controller", code: -43537, userInfo: [NSLocalizedDescriptionKey: "File is in incorrect format and can't be read"])
+            self.delegate?.controller(self, didFailToConnectToSourceWithError: error)
             return
         }
 

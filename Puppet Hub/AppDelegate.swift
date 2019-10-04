@@ -177,14 +177,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    @objc func handleReconnectButton(_ sender: Any) {
-        guard let serialPortPath = self.controller.serialPort?.name else {
-            return
-        }
-
-        self.connectToPort(path: serialPortPath)
-    }
-
     @objc func handleDisconnectButton(_ sender: Any) {
         self.controller.disconnect()
     }
@@ -238,17 +230,6 @@ extension AppDelegate: NSToolbarDelegate {
 
             return item
 
-        case "reconnect":
-            let button = NSButton(image: NSImage(named: "NSRefreshTemplate")!, target: self, action: #selector(self.handleReconnectButton(_:)))
-            button.toolTip = "Reconnect"
-            button.bezelStyle = .texturedRounded
-            button.isEnabled = (self.controller.isConnected == false)
-
-            let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-            item.view = button
-
-            return item
-
         case "server-info":
             let label = NSTextField(labelWithString: "Server listening on port 3000  ")
             label.font = NSFont.systemFont(ofSize: 13)
@@ -280,7 +261,7 @@ extension AppDelegate: SerialDelegate {
         dispatchMainSync {
             self.reloadToolbar()
             self.appendLog("Connection failed: \(error.localizedDescription)", type: .info)
-            self.appendLog("Check Mr. Puppet is correctly plugged in and click the Reconnect button\n", type: .info)
+            self.appendLog("Check Mr. Puppet is correctly plugged in and select the source again\n", type: .info)
         }
     }
 
@@ -303,6 +284,13 @@ extension AppDelegate: ControllerDelegate {
         dispatchMainSync {
             self.reloadToolbar()
             self.appendLog("Connected to \(identifier)", type: .info)
+        }
+    }
+
+    func controller(_ controller: Controller, didFailToConnectToSourceWithError error: Error) {
+        dispatchMainSync {
+            self.reloadToolbar()
+            self.appendLog("Connection failed: \(error.localizedDescription)", type: .info)
         }
     }
 
