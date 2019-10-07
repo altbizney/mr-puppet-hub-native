@@ -57,11 +57,16 @@ class Controller {
             return
         }
 
-        let lines = str.split(separator: "\n")
-        var idx = lines.startIndex
+        DispatchQueue.global(qos: .userInteractive).async {
+            let lines = str.split(whereSeparator: { (char) -> Bool in
+                return char.isNewline
+            })
 
-        DispatchQueue.global(qos: .background).async {
-            let timer = Timer.scheduledTimer(withTimeInterval: 60 * (1 / 1000), repeats: true) { [weak self] (timer) in
+            var idx = lines.startIndex
+
+            let timer = Timer.scheduledTimer(withTimeInterval: 60 / 1000, repeats: true) { [weak self] (timer) in
+                print(Date())
+
                 if idx == lines.endIndex {
                     idx = lines.startIndex
                     self?.broadcast(message: "DEBUG;LOOP")
