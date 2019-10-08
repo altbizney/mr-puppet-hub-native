@@ -21,9 +21,16 @@ class Controller {
 
     var fileTimer: Timer?
 
+    var recordingFileHandle: (URL, FileHandle)?
+
     var isConnected: Bool {
         return self.serialPort?.isConnected == true || self.fileTimer != nil
     }
+
+    var isRecording: Bool {
+        return self.recordingFileHandle != nil
+    }
+
 
     weak var delegate: ControllerDelegate?
     weak var serialDelegate: SerialDelegate?
@@ -65,8 +72,6 @@ class Controller {
             var idx = lines.startIndex
 
             let timer = Timer.scheduledTimer(withTimeInterval: 60 / 1000, repeats: true) { [weak self] (timer) in
-                print(Date())
-
                 if idx == lines.endIndex {
                     idx = lines.startIndex
                     self?.broadcast(message: "DEBUG;LOOP")
@@ -89,7 +94,7 @@ class Controller {
         }
     }
 
-    func disconnect() {
+    func disconnect() -> URL? {
         if let port = self.serialPort {
             port.close()
             self.serialPort = nil
@@ -101,12 +106,40 @@ class Controller {
 
             self.delegate?.controllerDidDisconnectSource(self)
         }
+
+        return self.stopRecordingMessages()
     }
 
     func broadcast(message: String) {
         WebSocketServer.broadcast(message: message)
 
+        if let (_, fileHandle) = self.recordingFileHandle, let data = message.appending("\n").data(using: .utf8) {
+            fileHandle.write(data)
+        }
+
         self.delegate?.controller(self, didBroadcastMessage: message)
+    }
+
+    func startRecordingMessages() {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        FileManager.default.createFile(atPath: url.path, contents: nil, attributes: nil)
+
+        let handle = try! FileHandle(forWritingTo: url)
+        handle.seekToEndOfFile()
+
+        self.recordingFileHandle = (url, handle)
+    }
+
+    func stopRecordingMessages() -> URL? {
+        guard let (url, handle) = self.recordingFileHandle else {
+            return nil
+        }
+
+        self.recordingFileHandle = nil
+
+        handle.closeFile()
+
+        return url
     }
 
 }

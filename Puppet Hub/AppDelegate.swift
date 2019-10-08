@@ -163,6 +163,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    func saveFile(tmpURL: URL) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd-HH-mm-SS"
+
+        let savePanel = NSSavePanel()
+        savePanel.nameFieldStringValue = dateFormatter.string(from: Date()) + ".txt"
+
+        savePanel.beginSheetModal(for: self.window) { (response) in
+            guard response == .OK, let finalURL = savePanel.url else {
+                return
+            }
+
+            try! FileManager.default.moveItem(at: tmpURL, to: finalURL)
+        }
+    }
+
     @objc func handleDeviceSelectButton(_ sender: Any) {
         guard let button = sender as? NSPopUpButton, let selectedItem = button.selectedItem else {
             return
@@ -178,7 +194,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func handleDisconnectButton(_ sender: Any) {
-        self.controller.disconnect()
+        let recordingURL = self.controller.disconnect()
+        self.reloadToolbar()
+
+        if let url = recordingURL {
+            self.saveFile(tmpURL: url)
+        }
+    }
+
+    @objc func handleRecordButton(_ sender: Any) {
+        if self.controller.isRecording {
+            let recordingURL = self.controller.stopRecordingMessages()
+
+            if let url = recordingURL {
+                self.saveFile(tmpURL: url)
+            }
+        } else {
+            self.controller.startRecordingMessages()
+        }
+
+        self.reloadToolbar()
     }
 
 }
@@ -189,6 +224,7 @@ extension AppDelegate: NSToolbarDelegate {
         return [
             NSToolbarItem.Identifier("select-device"),
             NSToolbarItem.Identifier("disconnect"),
+            NSToolbarItem.Identifier("record"),
             NSToolbarItem.Identifier.flexibleSpace,
             NSToolbarItem.Identifier("server-info"),
         ]
@@ -222,6 +258,16 @@ extension AppDelegate: NSToolbarDelegate {
 
         case "disconnect":
             let button = NSButton(title: "Disconnect", target: self, action: #selector(self.handleDisconnectButton(_:)))
+            button.bezelStyle = .texturedRounded
+            button.isEnabled = (self.controller.isConnected == true)
+
+            let item = NSToolbarItem(itemIdentifier: itemIdentifier)
+            item.view = button
+
+            return item
+
+        case "record":
+            let button = NSButton(title: self.controller.isRecording ? "Stop Recording" : "Record", target: self, action: #selector(self.handleRecordButton(_:)))
             button.bezelStyle = .texturedRounded
             button.isEnabled = (self.controller.isConnected == true)
 
