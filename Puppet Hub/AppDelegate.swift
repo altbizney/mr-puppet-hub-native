@@ -191,6 +191,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let serialPortPath = selectedItem.title
             self.controller.connectToPort(path: serialPortPath)
         }
+
+        self.reloadToolbar()
     }
 
     @objc func handleDisconnectButton(_ sender: Any) {
@@ -241,10 +243,10 @@ extension AppDelegate: NSToolbarDelegate {
     func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
         switch itemIdentifier.rawValue {
         case "select-device":
-            let deviceMenu = NSMenu(title: "Select Source")
+            let deviceMenu = NSMenu(title: self.controller.sourceName ?? "Select Source")
             self.deviceMenuDelegate.configureMenu(deviceMenu)
 
-            let button = NSPopUpButton(title: "", target: self, action: #selector(self.handleDeviceSelectButton(_:)))
+            let button = NSPopUpButton(title: self.controller.sourceName ?? "", target: self, action: #selector(self.handleDeviceSelectButton(_:)))
             button.bezelStyle = .texturedRounded
             button.pullsDown = true
             button.isEnabled = (self.controller.isConnected != true)
