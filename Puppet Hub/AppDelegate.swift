@@ -269,7 +269,7 @@ extension AppDelegate: NSToolbarDelegate {
         case "record":
             let button = NSButton(title: self.controller.isRecording ? "Stop Recording" : "Record", target: self, action: #selector(self.handleRecordButton(_:)))
             button.bezelStyle = .texturedRounded
-            button.isEnabled = (self.controller.isConnected == true)
+            button.isEnabled = (self.controller.isConnected == true && self.controller.serialPort != nil)
 
             let item = NSToolbarItem(itemIdentifier: itemIdentifier)
             item.view = button
