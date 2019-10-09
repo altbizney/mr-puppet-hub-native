@@ -19,12 +19,25 @@ class Controller {
 
     var serialPort: Serial?
 
+    var fileName: String?
     var fileTimer: Timer?
 
     var recordingFileHandle: (URL, FileHandle)?
 
     var isConnected: Bool {
         return self.serialPort?.isConnected == true || self.fileTimer != nil
+    }
+
+    var sourceName: String? {
+        if let portName = self.serialPort?.name {
+            return portName
+        }
+
+        if let fileName = self.fileName {
+            return fileName
+        }
+
+        return nil
     }
 
     var isRecording: Bool {
@@ -85,6 +98,7 @@ class Controller {
             self.fileTimer = timer
 
             DispatchQueue.main.async {
+                self.fileName = url.lastPathComponent
                 self.delegate?.controller(self, didConnectToSourceWithIdentifier: url.lastPathComponent)
             }
 
@@ -103,6 +117,7 @@ class Controller {
         if let timer = self.fileTimer {
             timer.invalidate()
             self.fileTimer = nil
+            self.fileName = nil
 
             self.delegate?.controllerDidDisconnectSource(self)
         }
