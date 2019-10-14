@@ -24,6 +24,8 @@ class Controller {
 
     var recordingFileHandle: (URL, FileHandle)?
 
+    var videoRecorder: VideoRecorder?
+
     var isConnected: Bool {
         return self.serialPort?.isConnected == true || self.fileTimer != nil
     }
@@ -155,6 +157,26 @@ class Controller {
         handle.closeFile()
 
         return url
+    }
+
+    func startRecordingVideo() {
+        self.videoRecorder = VideoRecorder()
+        self.videoRecorder?.start()
+    }
+
+    func stopRecordingVideo(completion: @escaping (Result<URL?, Error>) -> Void) {
+        guard let recorder = self.videoRecorder else {
+            return completion(.success(nil))
+        }
+
+        recorder.stop(completion: { result in
+            switch result {
+            case .success(let url):
+                completion(.success(url))
+            case .failure(let err):
+                completion(.failure(err))
+            }
+        })
     }
 
 }
