@@ -165,6 +165,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func saveFile(tmpDataURL: URL, tmpVideoURL: URL?) {
+        self.reloadToolbar()
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd-HH-mm-SS"
 
@@ -181,42 +183,49 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if let videoURL = tmpVideoURL {
                 try? FileManager.default.moveItem(at: videoURL, to: finalURL.appendingPathExtension("mp4"))
             }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.reloadToolbar()
+            }
         }
+
+        self.reloadToolbar()
     }
 
     func startRecording() {
-        let alert = NSAlert()
-        alert.messageText = "Record video from camera?"
-        alert.addButton(withTitle: "Record Data and Camera")
-        alert.addButton(withTitle: "Record Data")
-        alert.addButton(withTitle: "Cancel")
+//        let alert = NSAlert()
+//        alert.messageText = "Record video from camera?"
+//        alert.informativeText = "The video will be saved alongside the data file"
+//        alert.addButton(withTitle: "Record Data and Video")
+//        alert.addButton(withTitle: "Record Data")
+//        alert.addButton(withTitle: "Cancel")
 
-        alert.beginSheetModal(for: self.window, completionHandler: { response in
-            if response == .cancel || response == .alertThirdButtonReturn {
-                return
-            } else if response == .alertSecondButtonReturn {
+//        alert.beginSheetModal(for: self.window, completionHandler: { response in
+//            if response == .cancel || response == .alertThirdButtonReturn {
+//                return
+//            } else if response == .alertSecondButtonReturn {
                 self.controller.startRecordingMessages()
                 self.reloadToolbar()
-            } else {
-                if #available(OSX 10.14, *) {
-                    AVCaptureDevice.requestAccess(for: .video) { (isGranted) in
-                        guard isGranted else {
-                            return
-                        }
-
-                        DispatchQueue.main.async {
-                            self.controller.startRecordingMessages()
-                            self.controller.startRecordingVideo()
-                            self.reloadToolbar()
-                        }
-                    }
-                } else {
-                    self.controller.startRecordingMessages()
-                    self.controller.startRecordingVideo()
-                    self.reloadToolbar()
-                }
-            }
-        })
+//            } else {
+//                if #available(OSX 10.14, *) {
+//                    AVCaptureDevice.requestAccess(for: .video) { (isGranted) in
+//                        guard isGranted else {
+//                            return
+//                        }
+//
+//                        DispatchQueue.main.async {
+//                            self.controller.startRecordingMessages()
+//                            self.controller.startRecordingVideo()
+//                            self.reloadToolbar()
+//                        }
+//                    }
+//                } else {
+//                    self.controller.startRecordingMessages()
+//                    self.controller.startRecordingVideo()
+//                    self.reloadToolbar()
+//                }
+//            }
+//        })
     }
 
     func stopRecording() {
@@ -231,17 +240,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.controller.stopRecordingVideo { (result) in
             switch result {
             case .failure(let error):
-                let alert = NSAlert()
-                alert.messageText = "Unable to save video"
-                alert.informativeText = error.localizedDescription
-                alert.addButton(withTitle: "Continue")
-
-                alert.beginSheetModal(for: self.window) { (response) in
-                    self.saveFile(tmpDataURL: url, tmpVideoURL: nil)
-                }
+                print(error)
+                self.saveFile(tmpDataURL: url, tmpVideoURL: nil)
+                self.reloadToolbar()
 
             case .success(let videoURL):
                 self.saveFile(tmpDataURL: url, tmpVideoURL: videoURL)
+                self.reloadToolbar()
             }
         }
     }
@@ -264,6 +269,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func handleDisconnectButton(_ sender: Any) {
         self.stopRecording()
+        self.controller.disconnect()
+        self.reloadToolbar()
     }
 
     @objc func handleRecordButton(_ sender: Any) {
@@ -311,8 +318,9 @@ extension AppDelegate: NSToolbarDelegate {
             button.sizeToFit()
             button.menu = deviceMenu
 
-            let item = NSToolbarItem(itemIdentifier: itemIdentifier)
+            let item = ToolbarItem(itemIdentifier: itemIdentifier)
             item.view = button
+            item.isActive = (self.controller.isConnected != true)
 
             return item
 
@@ -321,8 +329,9 @@ extension AppDelegate: NSToolbarDelegate {
             button.bezelStyle = .texturedRounded
             button.isEnabled = (self.controller.isConnected == true)
 
-            let item = NSToolbarItem(itemIdentifier: itemIdentifier)
+            let item = ToolbarItem(itemIdentifier: itemIdentifier)
             item.view = button
+            item.isActive = (self.controller.isConnected == true)
 
             return item
 
@@ -331,8 +340,9 @@ extension AppDelegate: NSToolbarDelegate {
             button.bezelStyle = .texturedRounded
             button.isEnabled = (self.controller.isConnected == true && self.controller.serialPort != nil)
 
-            let item = NSToolbarItem(itemIdentifier: itemIdentifier)
+            let item = ToolbarItem(itemIdentifier: itemIdentifier)
             item.view = button
+            item.isActive = (self.controller.isConnected == true && self.controller.serialPort != nil)
 
             return item
 

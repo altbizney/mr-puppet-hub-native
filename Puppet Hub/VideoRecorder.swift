@@ -59,8 +59,9 @@ class VideoRecorder: NSObject {
     func stop(completion: @escaping (Result<URL, Error>) -> Void) {
         self.completion = completion
 
-        self.movieFileOutput.stopRecording()
+        self.movieFileOutput.pauseRecording()
         self.captureSession.stopRunning()
+        self.movieFileOutput.stopRecording()
     }
 
 }

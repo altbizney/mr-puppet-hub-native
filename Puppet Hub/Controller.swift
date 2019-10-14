@@ -110,7 +110,7 @@ class Controller {
         }
     }
 
-    func disconnect() -> URL? {
+    func disconnect() {
         if let port = self.serialPort {
             port.close()
             self.serialPort = nil
@@ -124,7 +124,7 @@ class Controller {
             self.delegate?.controllerDidDisconnectSource(self)
         }
 
-        return self.stopRecordingMessages()
+        return
     }
 
     func broadcast(message: String) {
