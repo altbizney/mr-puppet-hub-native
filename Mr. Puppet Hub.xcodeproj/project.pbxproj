@@ -17,6 +17,7 @@
 		BC6836162347B749009B0229 /* DriverInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6836152347B749009B0229 /* DriverInfo.swift */; };
 		BC762F3D22F358B800694F12 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC762F3C22F358B800694F12 /* Throttler.swift */; };
 		BC762F4722F44DCA00694F12 /* IODevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC762F4622F44DCA00694F12 /* IODevice.swift */; };
+		BCBEBB802354D014001C2CA2 /* VideoRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBEBB7F2354D014001C2CA2 /* VideoRecorder.swift */; };
 		BCD8C8F422E9BA5B00FE7CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */; };
 		BCD8C8F622E9BA5B00FE7CD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */; };
 		BCD8C8F922E9BA5B00FE7CD4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD8C8F722E9BA5B00FE7CD4 /* MainMenu.xib */; };
@@ -79,6 +80,7 @@
 		BC6836152347B749009B0229 /* DriverInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverInfo.swift; sourceTree = "<group>"; };
 		BC762F3C22F358B800694F12 /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		BC762F4622F44DCA00694F12 /* IODevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IODevice.swift; sourceTree = "<group>"; };
+		BCBEBB7F2354D014001C2CA2 /* VideoRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRecorder.swift; sourceTree = "<group>"; };
 		BCD8C8F022E9BA5B00FE7CD4 /* Mr. Puppet Hub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mr. Puppet Hub.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD8C8F322E9BA5B00FE7CD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				BC762F3C22F358B800694F12 /* Throttler.swift */,
 				BC073BE822EF1A7B00A366EF /* Server.swift */,
 				BCD8C92D22EA0E1E00FE7CD4 /* Serial.swift */,
+				BCBEBB7F2354D014001C2CA2 /* VideoRecorder.swift */,
 				BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */,
 				BCD8C8F722E9BA5B00FE7CD4 /* MainMenu.xib */,
 				BCD8C8FA22E9BA5B00FE7CD4 /* Info.plist */,
@@ -371,6 +374,7 @@
 				BC762F3D22F358B800694F12 /* Throttler.swift in Sources */,
 				BCD8C92E22EA0E1E00FE7CD4 /* Serial.swift in Sources */,
 				BC6836142347B5E3009B0229 /* Controller.swift in Sources */,
+				BCBEBB802354D014001C2CA2 /* VideoRecorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

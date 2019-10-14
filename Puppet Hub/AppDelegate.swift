@@ -12,6 +12,7 @@ import IOKit
 import IOKit.serial
 import IOKit.kext
 import Sparkle
+import AVKit
 
 func dispatchMainSync(_ block: () -> Void) {
     if Thread.current.isMainThread {
@@ -163,19 +164,85 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    func saveFile(tmpURL: URL) {
+    func saveFile(tmpDataURL: URL, tmpVideoURL: URL?) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd-HH-mm-SS"
 
         let savePanel = NSSavePanel()
-        savePanel.nameFieldStringValue = dateFormatter.string(from: Date()) + ".txt"
+        savePanel.nameFieldStringValue = dateFormatter.string(from: Date())
 
         savePanel.beginSheetModal(for: self.window) { (response) in
             guard response == .OK, let finalURL = savePanel.url else {
                 return
             }
 
-            try! FileManager.default.moveItem(at: tmpURL, to: finalURL)
+            try? FileManager.default.moveItem(at: tmpDataURL, to: finalURL.appendingPathExtension("txt"))
+
+            if let videoURL = tmpVideoURL {
+                try? FileManager.default.moveItem(at: videoURL, to: finalURL.appendingPathExtension("mp4"))
+            }
+        }
+    }
+
+    func startRecording() {
+        let alert = NSAlert()
+        alert.messageText = "Record video from camera?"
+        alert.addButton(withTitle: "Record Data and Camera")
+        alert.addButton(withTitle: "Record Data")
+        alert.addButton(withTitle: "Cancel")
+
+        alert.beginSheetModal(for: self.window, completionHandler: { response in
+            if response == .cancel || response == .alertThirdButtonReturn {
+                return
+            } else if response == .alertSecondButtonReturn {
+                self.controller.startRecordingMessages()
+                self.reloadToolbar()
+            } else {
+                if #available(OSX 10.14, *) {
+                    AVCaptureDevice.requestAccess(for: .video) { (isGranted) in
+                        guard isGranted else {
+                            return
+                        }
+
+                        DispatchQueue.main.async {
+                            self.controller.startRecordingMessages()
+                            self.controller.startRecordingVideo()
+                            self.reloadToolbar()
+                        }
+                    }
+                } else {
+                    self.controller.startRecordingMessages()
+                    self.controller.startRecordingVideo()
+                    self.reloadToolbar()
+                }
+            }
+        })
+    }
+
+    func stopRecording() {
+        let recordingURL = self.controller.stopRecordingMessages()
+
+        self.reloadToolbar()
+
+        guard let url = recordingURL else {
+            return // no data was being recorded...
+        }
+
+        self.controller.stopRecordingVideo { (result) in
+            switch result {
+            case .failure(let error):
+                let alert = NSAlert()
+                alert.messageText = "Unable to save video"
+                alert.informativeText = error.localizedDescription
+                alert.addButton(withTitle: "Continue")
+
+                alert.beginSheetModal(for: self.window) { (response) in
+                    self.saveFile(tmpDataURL: url, tmpVideoURL: nil)
+                }
+
+            case .success(let videoURL):
+                self.saveFile(tmpDataURL: url, tmpVideoURL: videoURL)
+            }
         }
     }
 
@@ -196,23 +263,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func handleDisconnectButton(_ sender: Any) {
-        let recordingURL = self.controller.disconnect()
-        self.reloadToolbar()
-
-        if let url = recordingURL {
-            self.saveFile(tmpURL: url)
-        }
+        self.stopRecording()
     }
 
     @objc func handleRecordButton(_ sender: Any) {
         if self.controller.isRecording {
-            let recordingURL = self.controller.stopRecordingMessages()
-
-            if let url = recordingURL {
-                self.saveFile(tmpURL: url)
-            }
+            self.stopRecording()
         } else {
-            self.controller.startRecordingMessages()
+            self.startRecording()
         }
 
         self.reloadToolbar()
