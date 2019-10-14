@@ -18,6 +18,8 @@ default_platform(:mac)
 platform :mac do
 
   lane :build_mac do
+    increment_build_number
+
     build_app(
       scheme: "Mr. Puppet Hub",
       workspace: "Mr. Puppet Hub.xcworkspace",
