@@ -3,10 +3,8 @@
 platform :osx, '10.12'
 
 target 'Mr. Puppet Hub' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Mr. Puppet Hub
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '4.3.1'
   pod 'Sparkle'
-
 end
