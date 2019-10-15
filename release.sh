@@ -3,8 +3,13 @@
 set -e
 
 if [ ! -f "$(pwd)/private.pem" ]; then
-  echo "You must have 'private.pem' configured to continue..."
-  exit 1
+        echo "error: you must have 'private.pem' configured to continue..."
+        exit 1
+fi
+
+if ! which sentry-cli >/dev/null; then
+        echo "error: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases"
+        exit 1
 fi
 
 cd "sparkle-cli-utils"
@@ -41,6 +46,17 @@ APP_SIGNATURE="$(./sparkle-cli-utils/build/Release/generate_signature "$DMG_PATH
 ./sparkle-cli-utils/build/Release/generate_appcast "$APP_PATH" "$PUBLIC_DMG_URL" "$APP_SIGNATURE"
 
 bundle exec fastlane package_zip
+
+# Upload symbols to sentry
+export SENTRY_ORG="thinko"
+export SENTRY_PROJECT="mr-puppet-hub"
+export SENTRY_AUTH_TOKEN="7f21a32bea1a47f89ff4c521991ca0fb7aa702b42fdd40fd9d2d9b43dbad3274"
+
+ERROR=$(sentry-cli upload-dif $(pwd)/release/)
+if [ ! $? -eq 0 ]; then
+        echo "error: sentry-cli - $ERROR"
+        exit 1
+fi
 
 # Upload .zip, .dmg and appcast.xml
 aws s3 cp "release/$APP_NAME.app.zip" "s3://thinko-artifacts/$AWS_RELEASE_PATH/"

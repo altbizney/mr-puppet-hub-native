@@ -13,6 +13,7 @@ import IOKit.serial
 import IOKit.kext
 import Sparkle
 import AVKit
+import Sentry
 
 func dispatchMainSync(_ block: () -> Void) {
     if Thread.current.isMainThread {
@@ -42,6 +43,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        do {
+            Sentry.Client.shared = try Sentry.Client(dsn: "https://7c079f80becd4d73b28187108eca01b5@sentry.io/1779426")
+            try Sentry.Client.shared?.startCrashHandler()
+        } catch let error {
+            print("\(error)")
+        }
+
+
         if #available(OSX 10.14, *) {
             NSApp.appearance = NSAppearance(named: .darkAqua)
         } else {
