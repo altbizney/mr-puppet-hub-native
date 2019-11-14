@@ -53,6 +53,11 @@ class Controller {
 
     func startWebServer(port: Int32) {
         DispatchQueue.global(qos: .background).async {
+            WebSocketServer.onMessageHandler = { message in
+                if let string = String(data: message, encoding: .utf8) {
+                    WebSocketServer.broadcast(message: string)
+                }
+            }
             WebSocketServer.start(port: port)
         }
     }
