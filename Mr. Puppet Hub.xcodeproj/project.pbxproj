@@ -11,7 +11,7 @@
 		BC073BE922EF1A7B00A366EF /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC073BE822EF1A7B00A366EF /* Server.swift */; };
 		BC073C0822EF2EC900A366EF /* libSwiftSerial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */; };
 		BC073C4422F069BA00A366EF /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC073C4122F0699A00A366EF /* libwebsockets.a */; };
-		BC073C4522F069BC00A366EF /* libwebsockets.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = BC073C4322F0699A00A366EF /* libwebsockets.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BC5A1B72237CD3CE00EB989D /* libwebsockets.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = BC073C4322F0699A00A366EF /* libwebsockets.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		BC68360C2347B5BC009B0229 /* DeviceMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC68360B2347B5BC009B0229 /* DeviceMenuDelegate.swift */; };
 		BC6836142347B5E3009B0229 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6836132347B5E3009B0229 /* Controller.swift */; };
 		BC6836162347B749009B0229 /* DriverInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6836152347B749009B0229 /* DriverInfo.swift */; };
@@ -45,7 +45,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = CD6A979500FA4E7E93F3AB91;
+			remoteGlobalIDString = 7E651B26B6E843B4A7C48621;
 			remoteInfo = websockets;
 		};
 		BCD8C92722EA0ABA00FE7CD4 /* PBXContainerItemProxy */ = {
@@ -64,7 +64,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BC073C4522F069BC00A366EF /* libwebsockets.dylib in Embed Libraries */,
+				BC5A1B72237CD3CE00EB989D /* libwebsockets.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,7 +541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = H7BXRR563Q;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/deps/libwebsockets/include",
@@ -575,7 +575,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = H7BXRR563Q;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/deps/libwebsockets/include",

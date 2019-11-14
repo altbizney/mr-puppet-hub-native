@@ -10,6 +10,9 @@ import Foundation
 
 struct WebSocketServer {
 
+    static var onMessageHandler: ((_ message: Data) -> Void)?
+
+
     private init() {}
 
 
@@ -57,6 +60,12 @@ struct WebSocketServer {
         case LWS_CALLBACK_CLOSED:
             if let wsi = wsi {
                 WebSocketServer.wsiConnections.remove(wsi)
+            }
+
+        case LWS_CALLBACK_RECEIVE:
+            if let rawPtr = `in` {
+                let data = Data(bytes: rawPtr, count: len)
+                WebSocketServer.onMessageHandler?(data)
             }
 
         default:
