@@ -20,7 +20,7 @@ class Controller {
     var serialPort: Serial?
 
     var fileName: String?
-    var fileTimer: Timer?
+    var fileTimer: RepeatingTimer?
 
     var recordingFileHandle: (URL, FileHandle)?
 
@@ -84,6 +84,9 @@ class Controller {
             return
         }
 
+
+        
+
         DispatchQueue.global(qos: .userInteractive).async {
             let lines = str.split(whereSeparator: { (char) -> Bool in
                 return char.isNewline
@@ -91,7 +94,8 @@ class Controller {
 
             var idx = lines.startIndex
 
-            let timer = Timer.scheduledTimer(withTimeInterval: 60 / 1000, repeats: true) { [weak self] (timer) in
+            let timer = RepeatingTimer(timeInterval: 60 / 1000)
+            timer.eventHandler = { [weak self] in
                 if idx == lines.endIndex {
                     idx = lines.startIndex
                     self?.broadcast(message: "DEBUG;LOOP")
@@ -102,6 +106,10 @@ class Controller {
                 idx = lines.index(after: idx)
             }
 
+//            let timer = Timer.scheduledTimer(withTimeInterval: 60 / 1000, repeats: true) { [weak self] (timer) in
+//
+//            }
+
             self.fileTimer = timer
 
             DispatchQueue.main.async {
@@ -109,9 +117,10 @@ class Controller {
                 self.delegate?.controller(self, didConnectToSourceWithIdentifier: url.lastPathComponent)
             }
 
-            let runLoop = RunLoop.current
-            runLoop.add(timer, forMode: .default)
-            runLoop.run()
+            timer.resume()
+//            let runLoop = RunLoop.current
+//            runLoop.add(timer, forMode: .)
+//            runLoop.run()
         }
     }
 
@@ -122,7 +131,7 @@ class Controller {
         }
 
         if let timer = self.fileTimer {
-            timer.invalidate()
+            timer.suspend()
             self.fileTimer = nil
             self.fileName = nil
 
@@ -133,6 +142,8 @@ class Controller {
     }
 
     func broadcast(message: String) {
+        print(message)
+
         WebSocketServer.broadcast(message: message)
 
         if let (_, fileHandle) = self.recordingFileHandle, let data = message.appending("\n").data(using: .utf8) {

@@ -11,6 +11,7 @@
 		BC073BE922EF1A7B00A366EF /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC073BE822EF1A7B00A366EF /* Server.swift */; };
 		BC073C0822EF2EC900A366EF /* libSwiftSerial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */; };
 		BC073C4422F069BA00A366EF /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC073C4122F0699A00A366EF /* libwebsockets.a */; };
+		BC2D559E237DB06400C4F87C /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2D5597237DB06400C4F87C /* RepeatingTimer.swift */; };
 		BC5A1B72237CD3CE00EB989D /* libwebsockets.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = BC073C4322F0699A00A366EF /* libwebsockets.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		BC68360C2347B5BC009B0229 /* DeviceMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC68360B2347B5BC009B0229 /* DeviceMenuDelegate.swift */; };
 		BC6836142347B5E3009B0229 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6836132347B5E3009B0229 /* Controller.swift */; };
@@ -76,6 +77,7 @@
 		BC073BE822EF1A7B00A366EF /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		BC073BED22EF1B0400A366EF /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libwebsockets.xcodeproj; path = deps/libwebsockets/libwebsockets.xcodeproj; sourceTree = "<group>"; };
+		BC2D5597237DB06400C4F87C /* RepeatingTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
 		BC68360B2347B5BC009B0229 /* DeviceMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMenuDelegate.swift; sourceTree = "<group>"; };
 		BC6836132347B5E3009B0229 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		BC6836152347B749009B0229 /* DriverInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverInfo.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				BC073BE822EF1A7B00A366EF /* Server.swift */,
 				BCD8C92D22EA0E1E00FE7CD4 /* Serial.swift */,
 				BCBEBB7F2354D014001C2CA2 /* VideoRecorder.swift */,
+				BC2D5597237DB06400C4F87C /* RepeatingTimer.swift */,
 				BCD8C8F522E9BA5B00FE7CD4 /* Assets.xcassets */,
 				BCD8C8F722E9BA5B00FE7CD4 /* MainMenu.xib */,
 				BCD8C8FA22E9BA5B00FE7CD4 /* Info.plist */,
@@ -378,6 +381,7 @@
 				BCD8C92E22EA0E1E00FE7CD4 /* Serial.swift in Sources */,
 				BC6836142347B5E3009B0229 /* Controller.swift in Sources */,
 				BCBEBBA223553A85001C2CA2 /* ToolbarItem.swift in Sources */,
+				BC2D559E237DB06400C4F87C /* RepeatingTimer.swift in Sources */,
 				BCBEBB802354D014001C2CA2 /* VideoRecorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
