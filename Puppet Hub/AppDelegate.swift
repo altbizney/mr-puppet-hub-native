@@ -13,6 +13,11 @@ import IOKit.serial
 import IOKit.kext
 import Sparkle
 import AVKit
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
+
+let kAppCenterAppId = "f4540d51-4d3b-4527-9303-18a067db8e1c"
 
 func dispatchMainSync(_ block: () -> Void) {
     if Thread.current.isMainThread {
@@ -43,6 +48,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
+        MSAppCenter.start(kAppCenterAppId, withServices:[
+          MSAnalytics.self,
+          MSCrashes.self
+        ])
+        
         if #available(OSX 10.14, *) {
             NSApp.appearance = NSAppearance(named: .darkAqua)
         } else {
@@ -59,7 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         self.reloadToolbar()
 
-        SUUpdater.shared().feedURL = URL(string: "https://mr-puppet.herokuapp.com/hub-macos/appcast.xml")
+        SUUpdater.shared().feedURL = URL(string: "https://api.appcenter.ms/v0.1/public/sparkle/apps/\(kAppCenterAppId)")
         SUUpdater.shared().automaticallyChecksForUpdates = true
         SUUpdater.shared().checkForUpdatesInBackground()
 
