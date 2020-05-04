@@ -17,7 +17,7 @@ import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
 
-let kAppCenterAppId = "f4540d51-4d3b-4527-9303-18a067db8e1c"
+let kAppCenterAppId = "123f30e6-a5e8-4d65-8ba2-b79bec1fdc03"
 
 func dispatchMainSync(_ block: () -> Void) {
     if Thread.current.isMainThread {
