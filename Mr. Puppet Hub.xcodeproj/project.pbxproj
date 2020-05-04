@@ -12,7 +12,6 @@
 		BC073C0822EF2EC900A366EF /* libSwiftSerial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD8C91D22EA0A9B00FE7CD4 /* libSwiftSerial.a */; };
 		BC073C4422F069BA00A366EF /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC073C4122F0699A00A366EF /* libwebsockets.a */; };
 		BC2D559E237DB06400C4F87C /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2D5597237DB06400C4F87C /* RepeatingTimer.swift */; };
-		BC5A1B72237CD3CE00EB989D /* libwebsockets.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = BC073C4322F0699A00A366EF /* libwebsockets.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		BC68360C2347B5BC009B0229 /* DeviceMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC68360B2347B5BC009B0229 /* DeviceMenuDelegate.swift */; };
 		BC6836142347B5E3009B0229 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6836132347B5E3009B0229 /* Controller.swift */; };
 		BC6836162347B749009B0229 /* DriverInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6836152347B749009B0229 /* DriverInfo.swift */; };
@@ -28,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2701229C245DB10A00A518FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3656AFC5A5BD46B0899F5B26;
+			remoteInfo = websockets;
+		};
 		BC073C4022F0699A00A366EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
@@ -42,13 +48,6 @@
 			remoteGlobalIDString = 79142FE3EDB5480E88763698;
 			remoteInfo = websockets_shared;
 		};
-		BC073C4822F069DD00A366EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC073C2D22F0699A00A366EF /* libwebsockets.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7E651B26B6E843B4A7C48621;
-			remoteInfo = websockets;
-		};
 		BCD8C92722EA0ABA00FE7CD4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BCD8C8E822E9BA5B00FE7CD4 /* Project object */;
@@ -57,20 +56,6 @@
 			remoteInfo = SwiftSerial;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		BC073C0B22EF2EE000A366EF /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				BC5A1B72237CD3CE00EB989D /* libwebsockets.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4BEEE60E68920CE83776609B /* Pods-Mr. Puppet Hub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mr. Puppet Hub.release.xcconfig"; path = "Target Support Files/Pods-Mr. Puppet Hub/Pods-Mr. Puppet Hub.release.xcconfig"; sourceTree = "<group>"; };
@@ -216,13 +201,12 @@
 				BCD8C8EC22E9BA5B00FE7CD4 /* Sources */,
 				BCD8C8ED22E9BA5B00FE7CD4 /* Frameworks */,
 				BCD8C8EE22E9BA5B00FE7CD4 /* Resources */,
-				BC073C0B22EF2EE000A366EF /* Embed Libraries */,
 				FA9EAFD7A32424EECF59EFEA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BC073C4922F069DD00A366EF /* PBXTargetDependency */,
+				2701229D245DB10A00A518FC /* PBXTargetDependency */,
 				BCD8C92822EA0ABA00FE7CD4 /* PBXTargetDependency */,
 			);
 			name = "Mr. Puppet Hub";
@@ -254,7 +238,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Thinko LLC";
 				TargetAttributes = {
 					BCD8C8EF22E9BA5B00FE7CD4 = {
@@ -397,10 +381,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BC073C4922F069DD00A366EF /* PBXTargetDependency */ = {
+		2701229D245DB10A00A518FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = websockets;
-			targetProxy = BC073C4822F069DD00A366EF /* PBXContainerItemProxy */;
+			targetProxy = 2701229C245DB10A00A518FC /* PBXContainerItemProxy */;
 		};
 		BCD8C92822EA0ABA00FE7CD4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -545,6 +529,7 @@
 			baseConfigurationReference = FAF480D27C41A5330443219E /* Pods-Mr. Puppet Hub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 13;
 				HEADER_SEARCH_PATHS = (
@@ -561,6 +546,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/deps/libwebsockets/lib/Debug/**";
 				MARKETING_VERSION = 1.5;
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-Wl,-search_paths_first",
 					"-Wl,-headerpad_max_install_names",
 					"$(SRCROOT)/deps/libwebsockets/lib/Debug/libwebsockets.a",
@@ -577,6 +563,7 @@
 			baseConfigurationReference = 4BEEE60E68920CE83776609B /* Pods-Mr. Puppet Hub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 13;
 				HEADER_SEARCH_PATHS = (
@@ -593,6 +580,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/deps/libwebsockets/lib/Debug/**";
 				MARKETING_VERSION = 1.5;
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-Wl,-search_paths_first",
 					"-Wl,-headerpad_max_install_names",
 					"$(SRCROOT)/deps/libwebsockets/lib/Debug/libwebsockets.a",
